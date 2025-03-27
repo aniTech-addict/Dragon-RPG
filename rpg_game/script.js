@@ -15,9 +15,9 @@ let current_weapon_index = 0;
 let monsterIndex = 0;
 let sceneIndex = 1; 
 let current_monsterHealth = 0;
-let wasAttack = 0;
 
-const attack_done = [false,true,true,true,false];
+const playerAttackDone = [false,true,true,true,false];
+let playerAttackStatus = false;
 
 
 // ---------------  Controlling Variables Declaration -----------------
@@ -145,8 +145,9 @@ function fightWolves(){
 
 // =========================== FIGHT FUNCTIONS ================================
 function attack() {
-    wasAttack = getRandomInt(0,4);
-    if (wasAttack) {
+    playerAttackStatus = playerAttackDone[getRandomInt(0,4)];
+
+    if (playerAttackStatus) {
         console.log("Attacking...");
         text.innerText = "Your Attack landed";
         current_monsterHealth = current_monsterHealth - weaponDamage[current_weapon_index];
@@ -154,7 +155,9 @@ function attack() {
     }
     else {
         console.log("Missed!");
-        text.innerText = "You missed!";
+        text.innerText = "You missed!\n Monster attacks you";
+        currentHealth = currentHealth - 3;
+        hp.innerText = currentHealth;
     }
     if (current_monsterHealth <= 0) {
         text.innerText = "You defeated the monster!";

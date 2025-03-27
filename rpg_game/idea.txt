@@ -1,0 +1,65 @@
+**Dragon RPG Game - Technical Plan**
+
+### **High-Level Overview**
+The game is a text-based RPG where players navigate through locations, battle monsters, and upgrade their stats. It uses HTML, CSS, and JavaScript for the frontend, with a scene-based system to manage interactions.
+
+---
+
+### **Current Features**
+1. **Locations**:
+   - **Town**: Central hub for navigation.
+   - **Store**: Buy health and weapons.
+   - **Cave**: Fight monsters (Slime, Wolves).
+2. **Monsters**:
+   - Slime, Wolves, and Dragon.
+3. **Stats**:
+   - XP, HP, Gold tracked and displayed.
+4. **Weapons**:
+   - Upgradable weapons (Stick → Sword → Axe → Revolver).
+5. **UI**:
+   - Clean, centered layout with buttons for actions.
+
+---
+
+### **Technical Implementation**
+1. **HTML**:
+   - Structure for stats, actions, and instructions.
+   - Buttons for navigation and actions.
+2. **CSS**:
+   - Styling for containers, buttons, and text.
+   - Gradient backgrounds for buttons.
+3. **JavaScript**:
+   - Scene-based system for location and monster interactions.
+   - Functions for updating stats, buying items, and fighting monsters.
+
+---
+
+### **Proposed Improvements**
+1. **Combat Mechanics**:
+   - Implement attack, defend, and run actions.
+   - Add damage calculations based on weapon and monster stats.
+2. **Progression System**:
+   - Reward XP for defeating monsters.
+   - Add leveling up with HP and damage bonuses.
+3. **Save/Load System**:
+   - Use `localStorage` to save player progress.
+4. **UI Enhancements**:
+   - Add animations for combat and transitions.
+   - Improve button feedback (e.g., hover effects).
+
+---
+
+### **Roadmap**
+1. **Phase 1**: Implement combat mechanics and XP system.
+2. **Phase 2**: Add save/load functionality.
+3. **Phase 3**: Enhance UI with animations and feedback.
+4. **Phase 4**: Add additional monsters and locations.
+
+---
+
+### **Technical Details**
+- **Scene Management**: Use an array of objects to manage locations and monsters.
+- **Stat Updates**: Functions to dynamically update XP, HP, and Gold.
+- **Weapon Upgrades**: Array-based system for weapon progression.
+
+---

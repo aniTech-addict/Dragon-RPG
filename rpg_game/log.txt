@@ -1,0 +1,23 @@
+**Project Log - Dragon RPG Game**
+
+### **2025-03-27**
+1. **Created `idea.txt`**:
+   - Outlined the technical plan for the game, including current features, proposed improvements, and a roadmap.
+
+### **2025-03-28**
+1. **Added `getRandomInt` function**:
+   - A utility function to generate random integers inclusively.
+2. **Added `wasAttack` variable**:
+   - Tracks whether an attack was successful.
+3. **Updated `attack` function**:
+   - Added logic to handle attack success or failure.
+   - Display messages for successful attacks and misses.
+   - Reward gold and update scene when a monster is defeated.
+4. **Renamed Variables for Clarity**:
+   - Replaced `wasAttack` with `playerAttackStatus` to track the player’s attack success.
+   - Replaced `attack_done` with `playerAttackDone` to store possible attack outcomes.
+5. **Updated `attack` Function**:
+   - Added logic for the monster to counterattack when the player misses.
+   - Deducts 3 HP from the player if the monster attacks.
+
+---
