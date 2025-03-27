@@ -1,15 +1,24 @@
-let weapons = ["stick", "sword", "axe", "revolver"];
+const weapons = ["stick", "sword", "axe", "revolver"];
+const weaponDamage = [5, 10, 15, 40];
+const monsterStats = [30, 100, 500];
+
 let health = 100;
 let weapon = weapons[0];
 let current_weapon_index = 0;
-let sceneIndex = 1; // Initialize sceneIndex
-let text = document.querySelector("#text");
+let monsterIndex = 0;
+let sceneIndex = 1; 
+let current_monsterHealth = 0;
+
 
 // ---------------  Controlling Variables Declaration -----------------
 
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
+
+const text = document.querySelector("#text");
+
+const monsterHealth = document.querySelector("#monsterHealth");
 
 let xp = document.querySelector("#xp");
 let hp = document.querySelector("#hp");
@@ -39,7 +48,9 @@ button1.onclick = goTown;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-let scene = [{
+let scene = [
+// ++++++++++++++++++++++++++++ Locations ++++++++++++++++++++++++++++++++++
+{
     name: "Store",
     text: "You are at the store.",
     buttons: ["Buy Health(10 gold)", "Buy Weapon(30 gold)", "Go to Town"],
@@ -55,8 +66,10 @@ let scene = [{
     name: "Cave",
     text: "You see Monsters in the cave.",
     buttons: ["Fight Slime Monsters", "Fight Fanged Wolves", "Leave to Town"],
-    button_fn: [fightSlime, "", goTown]
+    button_fn: [fightSlime,fightWolves, goTown]
 },
+
+// ++++++++++++++++++++++++++++ Monsters ++++++++++++++++++++++++++++++++++
 {
     name: "Dragon",
     text: "You see a dragon in front of you.",
@@ -68,13 +81,14 @@ let scene = [{
     text:"A weak slime monster appears",
     buttons:["Attack","Defend","Run"],
     button_fn:["attack","defend",goCave]
+},
+{
+    name:"Wolves",
+    text:"A pack of wolves appears",
+    buttons:["Attack","Defend","Run"],
+    button_fn:["attack","defend",goCave]
 }
 ];
-
-let monsterStats = [{
-    name: "Slime",
-    health: 20
-}]
 
 //=============================  Place change functions  =========================
 function goStore() {
@@ -91,14 +105,31 @@ function goTown() {
 }
 
 //============================  Monster Fight Functions  =========================
+function updateMonsterStats(monsterIndex){
+    current_monsterHealth = monsterStats[monsterIndex];
+    monsterHealth.innerText =  current_monsterHealth;
+}
+
 function fightDragon() {
+    monsterIndex = 2;
+    updateMonsterStats(monsterIndex);
+
     sceneIndex = 3; // Update sceneIndex
     updateScene(sceneIndex);
 }
 function fightSlime() {
+    monsterIndex = 0;
     updateMonsterStats(monsterIndex);
 
     sceneIndex = 4; // Update sceneIndex
+    updateScene(sceneIndex);
+}
+
+function fightWolves(){
+    monsterIndex = 1;
+    updateMonsterStats(monsterIndex);
+
+    sceneIndex=5;
     updateScene(sceneIndex);
 }
 
