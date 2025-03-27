@@ -1,3 +1,10 @@
+// Random integer generator
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+// ==================  Game Variables  =============================
 const weapons = ["stick", "sword", "axe", "revolver"];
 const weaponDamage = [5, 10, 15, 40];
 const monsterStats = [30, 100, 500];
@@ -8,6 +15,9 @@ let current_weapon_index = 0;
 let monsterIndex = 0;
 let sceneIndex = 1; 
 let current_monsterHealth = 0;
+let wasAttack = 0;
+
+const attack_done = [false,true,true,true,false];
 
 
 // ---------------  Controlling Variables Declaration -----------------
@@ -74,19 +84,19 @@ let scene = [
     name: "Dragon",
     text: "You see a dragon in front of you.",
     buttons: ["Attack", "Dodge Attack", "Run to Town"],
-    button_fn: ["","",goTown]
+    button_fn: [attack, "", goTown]
 },
 {
     name:"Slime",
     text:"A weak slime monster appears",
     buttons:["Attack","Defend","Run"],
-    button_fn:["attack","defend",goCave]
+    button_fn:[attack,"defend",goCave]
 },
 {
     name:"Wolves",
     text:"A pack of wolves appears",
     buttons:["Attack","Defend","Run"],
-    button_fn:["attack","defend",goCave]
+    button_fn:[attack,"defend",goCave]
 }
 ];
 
@@ -131,6 +141,28 @@ function fightWolves(){
 
     sceneIndex=5;
     updateScene(sceneIndex);
+}
+
+// =========================== FIGHT FUNCTIONS ================================
+function attack() {
+    wasAttack = getRandomInt(0,4);
+    if (wasAttack) {
+        console.log("Attacking...");
+        text.innerText = "Your Attack landed";
+        current_monsterHealth = current_monsterHealth - weaponDamage[current_weapon_index];
+        monsterHealth.innerText = current_monsterHealth;
+    }
+    else {
+        console.log("Missed!");
+        text.innerText = "You missed!";
+    }
+    if (current_monsterHealth <= 0) {
+        text.innerText = "You defeated the monster!";
+        currentGold = currentGold + 10;
+        gold.innerText = currentGold;
+        sceneIndex = 2;
+        updateScene(sceneIndex);
+    }
 }
 
 // ===========================   Store Functions  ==============================
