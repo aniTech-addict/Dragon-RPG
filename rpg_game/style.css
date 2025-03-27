@@ -1,0 +1,47 @@
+body{
+    background-color: rgb(5, 5, 70);
+    justify-content: center;
+}
+.container{
+    display:block;
+    border: solid 2px black;
+    width: 100%;
+    align-self: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    padding:10px;
+    background-color: white;
+    justify-content: center;
+}
+
+.stats{
+    border:solid 1px black;
+    padding: 5px;
+}
+
+.stat{
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.actions{
+    border:solid 1px black;
+    padding: 5px;
+
+}
+
+.instructions{
+    border: 1px solid black;
+    padding: 5px;
+    color:white;
+    background-color:rgb(5, 5, 63);
+}
+
+button{
+    display: inline-block;
+    padding-right: 20px;
+    border: 1px solid black;
+    padding:3px;
+    background-color:rgb(230, 195, 20);
+    background-image: linear-gradient(rgb(210, 207, 12),orange);
+}
